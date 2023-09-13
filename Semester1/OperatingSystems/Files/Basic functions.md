@@ -21,7 +21,7 @@ System tracks the position in the file with the object called `read-write pointe
 # write()
 `write(int filedes, const void *buffer, size_t n)`
 
-`write` copies data from buffer (like it's an array of bytes) to the file referred to by the `filedes`. On success, the number of bytes written is returned. On error, -1 is returned, and `errno` is set to indicate the error.
+`write` copies data from buffer (like it's an array of bytes) to the file referred to by the `filedes`. On success, the number of bytes written is returned. On error, -1 is returned, and [[errno]] is set to indicate the error.
 
 
 # close()
@@ -29,7 +29,7 @@ System tracks the position in the file with the object called `read-write pointe
 
 OMG, `close` closes the [[File descriptor]] (it no longer refers to any file description) and it can be reused. [[File permissions]], that process had, removes. If this is the last `fd` of connected file description, resources are freed.
 
-`close()` returns 0 on success and -1 on error (`errno` is set to indicate the error).
+`close()` returns 0 on success and -1 on error ([[errno]] is set to indicate the error).
 
 
 # lseek()
@@ -41,6 +41,6 @@ Reposition read/write file offset according to the directive `whence`.
 	`SEEK_SET`
         The file offset is set to offset bytes.
 	`SEEK_CUR`
-	    The  file  offset  is  set  to  its current location plus offset bytes.
+	    The file offset is set to its current location plus offset bytes.
 	`SEEK_END`
-        The file offset is set to the  size  of  the  file  plus  offset bytes.
+        The file offset is set to the size of the file plus offset bytes.
