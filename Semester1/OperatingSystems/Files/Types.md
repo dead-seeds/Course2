@@ -18,3 +18,5 @@ Size of `size_t` doesn't matter, **the allowed value range is from 0-65535**, t
 - `off_t` is used for describing file sizes. It is a `signed integer` type.
 - `off64_t` is a 64-bit version of the type, used in `glibc`.
 - `loff_t` is a 64-bit version of the type, introduced by the Linux [[Kernel]].
+- `st_blocks` - ?
+- `st_size` - ?
