@@ -2,6 +2,7 @@ Virtual memory is a concept that enables process sandboxing by creating a table 
 In [[UNIX]] there are block of shared memory included in multiple processes' virtual memory mapping.
 
 
+[Source of virtual memory layout](https://github.com/illumos/illumos-gate/blob/master/usr/src/uts/i86pc/os/startup.c)
 32-bit Kernel's Virtual memory layout:
 
 |              |                        |                                 |
