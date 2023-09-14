@@ -1,3 +1,6 @@
+
+Permissions mask has 12-bit. Greatest 3 bits are for `setuid`, `setgid` and sticky-bits. Next 9 bits are for access permissions. These bits can be set with 3 3-bit numbers (0-7).
+
 The three digits of the `chmod` code set permissions for these groups in this order:
 1. Owner (you)
 2. Group (a group of other users that you set up)
