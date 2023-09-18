@@ -1,0 +1,1 @@
+`free` frees memory with labeling it as free, like "can be reused".
