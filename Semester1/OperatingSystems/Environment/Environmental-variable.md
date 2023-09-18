@@ -1,6 +1,6 @@
 # Environmental variables
 In Unix, the environment variables are normally initialized 
-during system startup by the system init startup scripts, 
+during system startup by the system `init` startup scripts, 
 and hence inherited by all other processes in the system
 
 ### Bash's quick assignment and inheritance trick
