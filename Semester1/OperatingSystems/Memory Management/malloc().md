@@ -4,15 +4,26 @@ Source code: https://elixir.bootlin.com/glibc/glibc-2.26/source/malloc/malloc.c#
 
 If the size of the space requested is zero, the behavior is implementation-defined: either a null pointer is returned to indicate an error, or the behavior is as if the size were some nonzero value.
 
-`malloc()` will call the system call internally (in unix its `sbrk()`) to get the memory block which is greater in size than requested. Later if the user needs more memory then `malloc()` will give from the extra chunk that it got.
+`malloc()` will call the system call internally (in UNIX its [[sbrk()]]) to get the memory block which is greater in size than requested. Later if the user needs more memory then `malloc()` will give from the extra chunk that it got.
 
-A common trick to work around this is to store meta-information about a memory region in some space that we squirrel away just below the pointer that we return. Say the top of the heap is currently at `0x1000` and we ask for `0x400` bytes. Our current malloc will request `0x400` bytes from `sbrk` and return a pointer to `0x1000`. If we instead save, say, `0x10` bytes to store information about the block, our malloc would request `0x410` bytes from `sbrk` and return a pointer to `0x1010`, hiding our `0x10` byte block of meta-information from the code that's calling malloc.
+A common trick to work around this is to store meta-information about a memory region in some space that we squirrel away just below the pointer that we return. Say the top of the heap is currently at `0x1000` and we ask for `0x400` bytes. Our current `malloc` will request `0x400` bytes from [[sbrk()]] and return a pointer to `0x1000`. If we instead save, say, `0x10` bytes to store information about the block, our `malloc` would request `0x410` bytes from [[sbrk()]] and return a pointer to `0x1010`, hiding our `0x10` byte block of meta-information from the code that's calling `malloc`.
 
+1550 line:
+   Binmap
+
+    To help compensate for the large number of bins, a one-level index
+    structure is used for bin-by-bin searching.  `binmap' is a
+    bitvector recording whether bins are definitely empty so they can
+    be skipped over during during traversals.  The bits are NOT always
+    cleared as soon as bins are empty, but instead only
+    when they are noticed to be empty during traversal in malloc.
+
+ 
 Bins details from 1354 line
 +
 Chunk details from 1389 line
 +
-this scheme:
+Chunk scheme:
    **malloc_chunk details**:
 
     (The following includes lightly edited explanations by Colin Plumb.)
