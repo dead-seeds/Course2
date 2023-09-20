@@ -1,4 +1,3 @@
-# Environmental variables
 In Unix, the environment variables are normally initialized 
 during system startup by the system init startup scripts, 
 and hence inherited by all other processes in the system
@@ -57,5 +56,16 @@ sendmail_enable="NO"
 sshd_enable="YES"
 ```
 
+## Access
+There are 3 ways to read current environmental variables:
+1. Third main parameter: `int main(int argc, char *argv[], char* envp[])`. Yes, there is a third one. It is standard (Irtegov verified)
+2. Extern variable: `char **environ`
+3. Systems calls: #syscall `putenv`, `setenv`
+Third one is preferable to others because there is less space for error.
 
+## Shell export
+Other name for environmental variables is shell's exported variables. Shell has variables, and only exported ones will be in environment.
 
+## Examples
+1. PATH - list of directories to search binaries in. [[Unix]], contrary to [[Windows]], does not include current working directory by default. 
+2. TZ - current timezone. If empty - look in /etc/TIMEZONE
