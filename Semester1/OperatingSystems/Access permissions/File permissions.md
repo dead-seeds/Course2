@@ -28,9 +28,12 @@ What these numbers are:
 |**5**| Read and execute permission: 4 (read) + 1 (execute) = 5  |r-x|
 |**6**| Read and write permission: 4 (read) + 2 (write) = 6      |rw-|
 |**7**| All permissions: 4 (read) + 2 (write) + 1 (execute) = 7  |rwx|
+<<<<<<< HEAD
 
 ## Directories
 As you probably know, [[File]]s in [[UNIX]] can represent a multitude of things, including directories. And since all files have permissions specified on them, directories also have permissions. However, what they mean is not very straightforward.
 - Read permission. Allows to read **a list of files** inside. To read the files themselves you need a permission on them.
 - Write permission. Allows to modify **a list of files** inside. This includes creating, moving, deleting files. Does not work without Execute permission. To change the files themselves you still need a permission on them.
 - Execute permission. Grants access to files' [[inode]]s inside the directory. You need this permission if you want to read/write/execute files inside the directory. 
+=======
+>>>>>>> de1c536 (dump of 3rd lecture)
