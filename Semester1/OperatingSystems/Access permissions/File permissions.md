@@ -35,9 +35,15 @@ As you probably know, [[File]]s in [[UNIX]] can represent a multitude of things,
 - Read permission. Allows to read **a list of files** inside. To read the files themselves you need a permission on them.
 - Write permission. Allows to modify **a list of files** inside. This includes creating, moving, deleting files. Does not work without Execute permission. To change the files themselves you still need a permission on them.
 <<<<<<< HEAD
+<<<<<<< HEAD
 - Execute permission. Grants access to files' [[inode]]s inside the directory. You need this permission if you want to read/write/execute files inside the directory. 
 =======
 >>>>>>> de1c536 (dump of 3rd lecture)
 =======
 - Execute permission. Grants access to files' [[inode]]s inside the directory. You need this permission if you want to read/write/execute files inside the directory. 
 >>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
+=======
+- Execute permission. Grants access to files' [[inode]]s inside the directory. You need this permission if you want to read/write/execute files inside the directory. 
+=======
+>>>>>>> 9074d41 (dump of 3rd lecture rebase)
+>>>>>>> ea66029 (dump of 3rd lecture rebase)
