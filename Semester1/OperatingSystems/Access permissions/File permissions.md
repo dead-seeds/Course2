@@ -28,5 +28,3 @@ What these numbers are:
 |**5**| Read and execute permission: 4 (read) + 1 (execute) = 5  |r-x|
 |**6**| Read and write permission: 4 (read) + 2 (write) = 6      |rw-|
 |**7**| All permissions: 4 (read) + 2 (write) + 1 (execute) = 7  |rwx|
-
-
