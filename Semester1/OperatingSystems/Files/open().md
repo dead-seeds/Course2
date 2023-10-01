@@ -1,4 +1,4 @@
-`open(const char *pathname, int flags)`
+	 g`open(const char *pathname, int flags)`
 
 Function call returns [[File descriptor]].
 There are only three possible options: `O_RDONLY`, `O_WRONLY`, or `O_RDWR`. These request opening the file read-only, write-only, or read/write.
