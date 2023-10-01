@@ -1,12 +1,17 @@
 Файл в Unix — это либо именованная совокупность данных в файловой системе, либо интерфейс для доступа к физическому или виртуальному устройству, либо интерфейс для доступа к некоторым средствам межпроцессного (трубы) и сетевого (сокеты) взаимодействия.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Semester1/OperatingSystems/Files and catalogues/File.md
 New file has no allocated memory for data. [[OS]] give file disk space while writing new data.
 =======
 Another, more concise definition
 > File is object that can be read and written to
 >>>>>>> 52db4bb (Clafifications from previous lecture):Semester1/OperatingSystems/Files/File.md
+=======
+Another, more concise definition
+> File is object that can be read and written to
+>>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
 =======
 Another, more concise definition
 > File is object that can be read and written to
@@ -19,6 +24,7 @@ New file has no allocated memory for data. OS give file disk space while writing
 File size stores in data structure [[inode]]. Actually, there is no `EOF` symbol in the end of file.
 
 Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -34,3 +40,5 @@ In a file there can be "holes" - places where no write operation was performed. 
 =======
 - Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
 >>>>>>> be7dfd4 (Start of dynamic memory management, good + bad source to find information, file clarifications)
+=======
+>>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
