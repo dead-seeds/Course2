@@ -1,8 +1,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c0ee077 (Clafifications from previous lecture)
+=======
+>>>>>>> d9cdf29 (Directories permissions + notes from two lectures (#6))
 <<<<<<< HEAD:Semester1/OperatingSystems/Files and catalogues/File descriptor.md
 File descriptor is like an index (non-negative `int`) of the created data structure in the [[OS]] core. The table of file descriptors is stored in user process part of [[Virtual memory]], but the structures, that describe files are stored in shared object part. 
 =======
@@ -32,6 +35,7 @@ Table of file descriptors contain pointers to file objects that in consequently 
 
 Table of file descriptors contain pointers to file descriptor objects that in consequently contain:
 =======
+<<<<<<< HEAD
 Table of file descriptors contain pointers to file objects that in consequently contain:
 >>>>>>> d14664a (Clafifications from previous lecture)
 <<<<<<< HEAD
@@ -40,7 +44,16 @@ Table of file descriptors contain pointers to file objects that in consequently 
 =======
 Table of file descriptors contain pointers to file descriptor objects that in consequently contain:
 >>>>>>> 4ceadac (Start of dynamic memory management, good + bad source to find information, file clarifications)
+<<<<<<< HEAD
 >>>>>>> 8e096a3 (Start of dynamic memory management, good + bad source to find information, file clarifications)
+=======
+=======
+File descriptor is like an index (non-negative `int`) of the created data structure in the OS core. The table of file descriptors is stored in each user process part of [[Virtual memory]], but the structures, that describe files are stored in shared object part.
+
+Table of file descriptors contain pointers to file objects that in consequently contain:
+>>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
+>>>>>>> c3dafb7 (Directories permissions + notes from two lectures (#6))
+>>>>>>> d9cdf29 (Directories permissions + notes from two lectures (#6))
 * Current offset in opened file.
 * Flags.
 * Counter of pointers to this file description.

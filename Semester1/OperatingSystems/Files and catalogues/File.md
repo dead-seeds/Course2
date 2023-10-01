@@ -3,12 +3,17 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Semester1/OperatingSystems/Files and catalogues/File.md
 New file has no allocated memory for data. [[OS]] give file disk space while writing new data.
 =======
 =======
+=======
+>>>>>>> d9cdf29 (Directories permissions + notes from two lectures (#6))
 
 =======
+=======
+>>>>>>> c3dafb7 (Directories permissions + notes from two lectures (#6))
 <<<<<<< HEAD:Semester1/OperatingSystems/Files and catalogues/File.md
 >>>>>>> d14664a (Clafifications from previous lecture)
 New file has no allocated memory for data. [[OS]] give file disk space while writing new data.
@@ -16,6 +21,10 @@ New file has no allocated memory for data. [[OS]] give file disk space while wri
 Another, more concise definition
 > File is object that can be read and written to
 >>>>>>> 52db4bb (Clafifications from previous lecture):Semester1/OperatingSystems/Files/File.md
+=======
+Another, more concise definition
+> File is object that can be read and written to
+>>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
 
 <<<<<<< HEAD
 >>>>>>> c0ee077 (Clafifications from previous lecture)
@@ -40,6 +49,7 @@ New file has no allocated memory for data. OS give file disk space while writing
 File size stores in data structure [[inode]]. Actually, there is no `EOF` symbol in the end of file.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -49,6 +59,12 @@ Text and binary files are the same to [[Kernel]]. The difference start on the le
 =======
 <<<<<<< HEAD
 >>>>>>> c0ee077 (Clafifications from previous lecture)
+=======
+=======
+Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
+>>>>>>> c3dafb7 (Directories permissions + notes from two lectures (#6))
+<<<<<<< HEAD
+>>>>>>> d9cdf29 (Directories permissions + notes from two lectures (#6))
 
 ## Sparse files
 In a file there can be "holes" - places where no write operation was performed. No memory is allocated for that "hole". There are a number of applications for those files:
@@ -57,6 +73,7 @@ In a file there can be "holes" - places where no write operation was performed. 
 - Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
 =======
 - Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
@@ -64,6 +81,8 @@ In a file there can be "holes" - places where no write operation was performed. 
 =======
 >>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
 =======
+=======
+>>>>>>> d9cdf29 (Directories permissions + notes from two lectures (#6))
 Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
 <<<<<<< HEAD
 >>>>>>> d14664a (Clafifications from previous lecture)
@@ -77,4 +96,10 @@ In a file there can be "holes" - places where no write operation was performed. 
 - Hash maps. Those are usually sparse, so it is handy to store them like in memory.
 - Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
 >>>>>>> 4ceadac (Start of dynamic memory management, good + bad source to find information, file clarifications)
+<<<<<<< HEAD
 >>>>>>> 8e096a3 (Start of dynamic memory management, good + bad source to find information, file clarifications)
+=======
+=======
+>>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
+>>>>>>> c3dafb7 (Directories permissions + notes from two lectures (#6))
+>>>>>>> d9cdf29 (Directories permissions + notes from two lectures (#6))
