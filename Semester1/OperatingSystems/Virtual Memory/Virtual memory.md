@@ -1,6 +1,17 @@
 Virtual memory is a concept that enables process sandboxing by creating a table that maps from virtual address to the real one. #doublecheck This way [[Kernel]] can have fine-grained control over which resources can be access from a particular process.
 In [[UNIX]] there are block of shared memory included in multiple processes' virtual memory mapping.
 
+Process structures:
+- TEXT - machine code
+- DATA - initialized static data
+- BSS - not initialized static data
+- STACK
+- Heap
+- Dynamic segments #ask
+- User area process descriptor in kernel - legacy because now kernels have multiple threads and its no longer possible to map this to one area. (Its NOT user memory)
+	- Stack of process in kernel
+	- Open file descriptors
+	- Process attributes
 
 [Source of virtual memory layout](https://github.com/illumos/illumos-gate/blob/master/usr/src/uts/i86pc/os/startup.c)
 32-bit Kernel's Virtual memory layout:
