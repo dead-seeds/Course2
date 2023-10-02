@@ -6,7 +6,7 @@ Ways to send signals:
 * [[sigsend()]]
 * [[kill()]]
 * [[alarm()]]
-* some kind of event (ctrl+c or dividing by zero)
+* some kind of event (`ctrl+c` or dividing by zero)
 
 Every [[Process]] has **signal mask**, that describes what signals are blocked to be received for this process. `SIGKILL` and `SIGSTOP` can't be blocked with mask.
 
