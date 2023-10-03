@@ -30,4 +30,8 @@ Almost all garbage collection strategies are targeted at reducing stop-world tim
 - Best fit
 - First fit
 - Worst fit
+<<<<<<< HEAD
 >>>>>>> be7dfd4 (Start of dynamic memory management, good + bad source to find information, file clarifications)
+=======
+>>>>>>> 4ceadac (Start of dynamic memory management, good + bad source to find information, file clarifications)
+>>>>>>> 8e096a3 (Start of dynamic memory management, good + bad source to find information, file clarifications)

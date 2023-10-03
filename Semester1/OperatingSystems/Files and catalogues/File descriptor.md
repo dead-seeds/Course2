@@ -28,12 +28,19 @@ Table of file descriptors contain pointers to file objects that in consequently 
 =======
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 Table of file descriptors contain pointers to file descriptor objects that in consequently contain:
 =======
 Table of file descriptors contain pointers to file objects that in consequently contain:
 >>>>>>> d14664a (Clafifications from previous lecture)
+<<<<<<< HEAD
 >>>>>>> c0ee077 (Clafifications from previous lecture)
+=======
+=======
+Table of file descriptors contain pointers to file descriptor objects that in consequently contain:
+>>>>>>> 4ceadac (Start of dynamic memory management, good + bad source to find information, file clarifications)
+>>>>>>> 8e096a3 (Start of dynamic memory management, good + bad source to find information, file clarifications)
 * Current offset in opened file.
 * Flags.
 * Counter of pointers to this file description.
