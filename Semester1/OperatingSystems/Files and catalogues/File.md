@@ -14,3 +14,8 @@ New file has no allocated memory for data. OS give file disk space while writing
 File size stores in data structure [[inode]]. Actually, there is no `EOF` symbol in the end of file.
 
 Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
+
+## Sparse files
+In a file there can be "holes" - places where no write operation was performed. No memory is allocated for that "hole". There are a number of applications for those files:
+- Hash maps. Those are usually sparse, so it is handy to store them like in memory.
+- Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
