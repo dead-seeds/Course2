@@ -1,4 +1,5 @@
 There has to be ways to dynamically allocate memory. There are a number of techniques to do that:
+<<<<<<< HEAD
 - [[Stack allocator]]s
 - Double
 - [[Fixed-sized blocks allocator]]s
@@ -21,3 +22,12 @@ There are several strategies to collect the garbage:
 3. Copying garbage collection. Similar to mark and sweep, but instead of freeing garbage it *copies* non-garbage to another part of the memory (a half, typically). Another benefit is heap defragmentation.
 4. Generational garbage collection. Divides memory into even more chunks (For different generations) in hope of reduce overhead of allocating small objects.
 Almost all garbage collection strategies are targeted at reducing stop-world time while moving a lot of work into background threads.
+=======
+- Stack
+- Pool, heap - a list of free blocks
+
+## Allocation strategies
+- Best fit
+- First fit
+- Worst fit
+>>>>>>> be7dfd4 (Start of dynamic memory management, good + bad source to find information, file clarifications)

@@ -20,10 +20,17 @@ File size stores in data structure [[inode]]. Actually, there is no `EOF` symbol
 
 Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> be7dfd4 (Start of dynamic memory management, good + bad source to find information, file clarifications)
 
 ## Sparse files
 In a file there can be "holes" - places where no write operation was performed. No memory is allocated for that "hole". There are a number of applications for those files:
 - Hash maps. Those are usually sparse, so it is handy to store them like in memory.
+<<<<<<< HEAD
 - Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
 =======
 >>>>>>> fc2c424 (Directories permissions + notes from two lectures (#6))
+=======
+- Torrent files. Torrents are downloaded in parts, so it can be useful to write those parts where they belong right away, instead of rearranging them afterwards.
+>>>>>>> be7dfd4 (Start of dynamic memory management, good + bad source to find information, file clarifications)
