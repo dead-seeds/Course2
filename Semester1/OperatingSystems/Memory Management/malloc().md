@@ -6,7 +6,11 @@ If the size of the space requested is zero, the behavior is implementation-defin
 
 `malloc()` will call the system call internally (in UNIX its [[sbrk()]]) to get the memory block which is greater in size than requested. Later if the user needs more memory then `malloc()` will give from the extra chunk that it got.
 
-A common trick to work around this is to store meta-information about a memory region in some space that we squirrel away just below the pointer that we return. Say the top of the heap is currently at `0x1000` and we ask for `0x400` bytes. Our current `malloc` will request `0x400` bytes from [[sbrk()]] and return a pointer to `0x1000`. If we instead save, say, `0x10` bytes to store information about the block, our `malloc` would request `0x410` bytes from [[sbrk()]] and return a pointer to `0x1010`, hiding our `0x10` byte block of meta-information from the code that's calling `malloc`.
+One naive way is to partition it into zones, often called "buckets", which are dedicated to certain structure sizes. For example, a `malloc` implementation could create buckets for 16, 64, 256 and 1024 byte structures. If you ask `malloc` to give you memory of a given size it rounds that number up to the next bucket size and then gives you an element from that bucket. If you need a bigger area `malloc` could use `mmap` to allocate directly with the [[Kernel]]. If the bucket of a certain size is empty `malloc` could use [[sbrk()]] to get more space for a new bucket.
+
+There are various `malloc` designs and there is propably no one true way of implementing `malloc` as you need to make a compromise between speed, overhead and avoiding fragmentation/space effectiveness. For example, if a bucket runs out of elements an implementation might get an element from a bigger bucket, split it up and add it to the bucket that ran out of elements. This would be quite space efficient but would not be possible with every design. If you just get another bucket via [[sbrk()]]/`mmap` that might be faster and even easier, but not as space efficient. Also, the design must of course take into account that [[free()]] needs to make space available to `malloc` again somehow. You don't just hand out memory without reusing it.
+
+Also, there is a meta-information about a memory region in some space that we squirrel away just below the pointer that we return. Say the top of the heap (check [[Virtual memory]]) is currently at `0x1000` and we ask for `0x400` bytes. Our current `malloc` will request `0x400` bytes from [[sbrk()]] and return a pointer to `0x1000`. If we instead save, say, `0x10` bytes to store information about the block, our `malloc` would request `0x410` bytes from [[sbrk()]] and return a pointer to `0x1010`, hiding our `0x10` byte block of meta-information from the code that's calling `malloc`.
 
 1550 line:
    Binmap
@@ -129,6 +133,7 @@ Chunk scheme:
 	with their neighbors only in bulk, in malloc_consolidate.
 
 
+As we can see on the screenshot, `malloc` has EXPLICIT LIST OF FREE BLOCKS
 ![[Pasted image 20230918143855.png]]
 
 

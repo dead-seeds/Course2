@@ -1,5 +1,8 @@
 Файл в Unix — это либо именованная совокупность данных в файловой системе, либо интерфейс для доступа к физическому или виртуальному устройству, либо интерфейс для доступа к некоторым средствам межпроцессного (трубы) и сетевого (сокеты) взаимодействия.
 
+
+New file has no allocated memory for data. [[OS]] give file disk space while writing new data.
+
 Another, more concise definition
 > File is object that can be read and written to
 
@@ -9,7 +12,6 @@ New file has no allocated memory for data. OS give file disk space while writing
 
 File size stores in data structure [[inode]]. Actually, there is no `EOF` symbol in the end of file.
 
-Text and binary files are the same to [[Kernel]]. The difference start on the level of user programs like [[vim]], [[nano]], etc
 
 ## Sparse files
 In a file there can be "holes" - places where no write operation was performed. No memory is allocated for that "hole". There are a number of applications for those files:
