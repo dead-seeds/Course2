@@ -1,6 +1,6 @@
 `off_t lseek(int fd, off_t offset, int whence)`
 
-Reposition read/write file offset according to the directive `whence`.
+Reposition read/write [[File]] offset according to the directive `whence`.
 
 `WHENCE`:	
 	`SEEK_SET`
