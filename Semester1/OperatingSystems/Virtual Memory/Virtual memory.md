@@ -1,4 +1,5 @@
-Virtual memory is a concept that enables process sandboxing by creating a table that maps from virtual address to the real one. #doublecheck This way [[Kernel]] can have fine-grained control over which resources can be access from a particular process.
+Virtual memory is a concept that enables process sandboxing by creating a table that maps from virtual address to the real one. Which is based on hardware support from [[Memory Management Unit]]. 
+This allows [[Kernel]] to have fine-grained control over which resources can be access from a particular process. This sandboxing protects memory of other processes from being broken by a different one. 
 In [[UNIX]] there are block of shared memory included in multiple processes' virtual memory mapping.
 
 Process structures:
