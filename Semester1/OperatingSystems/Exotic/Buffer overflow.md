@@ -26,7 +26,7 @@ By overflowing a buffer and overwriting the function pointers stored on the heap
 https://www.win.tue.nl/~aeb/linux/hh/hh-11.html#ss11.2
 https://www.opennet.ru/base/sec/heap_overflow.txt.html - Opennet is cringe, but this old paper is very good for understanding.
 
-By overflowing a buffer and overwriting the metadata associated with an object stored on the heap, you might be able to overwrite the memory table pointer so that when `free()` runs, it frees up something other than what it originally allocated. When overwriting the size field, we must take care that the computed location of the next chunk lies in allocated memory, to not to cause segfault in [[free()]]. 
+By overflowing a buffer and overwriting the metadata associated with an object stored on the heap, you might be able to overwrite the memory table pointer so that when `free()` runs, it frees up something other than what it originally allocated. When overwriting the size field, we must be careful that the computed location of the next chunk lies in allocated memory, to not to cause segfault in [[free()]]. 
 
 The C program does not call `free()` directly, since the address is unknown at translation time. The call is indirect via an entry in the program linking table that is filled by the dynamic loader. If we overwrite that entry with our favorite address, we will jump there instead.
 
