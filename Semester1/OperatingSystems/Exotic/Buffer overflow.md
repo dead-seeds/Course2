@@ -1,6 +1,7 @@
 Thanks **The Morris Worm** - first web worm that used buffer overflow exploit.
 
 It occurs when the data volume exceeds the capacity of a memory buffer. In this way extra data can be written (or red) to the memory space right after buffer's, and this behavior we need to prevent.
+
 ### Stack-based overflow:
 As an example, nowadays, many languages use [[Stack frame]] technology (so we know where frame pointers and return addresses and etc are stored), so with use of buffer overflow exploit we can change return address to what we want and run arbitrary commands at this address... Or, that sounds not so scary, we can just read or change data, that was allocated on stack.
 
@@ -9,10 +10,34 @@ Trampoline technique: Instead of setting the return address directly to the addr
 How to beat NX? The `system()` function, being part of a system [[Library]], is already executable. The exploit doesn't have to execute code from the stack, it just has to read the command line from the stack. This technique is called "return-to-libc"  (`libc` is the name of the Unix [[Library]] that implements many key functions, including `system()`, and is typically found loaded into every single [[UNIX]] [[Process]], so it makes a good target for this kind of thing)
 ![[Pasted image 20231011175116.png]]
 Another moment... Stack has a finite size, soo if the user input is longer than the stack space, the program cannot verify it and stack overflows. The overflow can become a security threat or loophole when combined with malicious inputs.
+
+### Heap-based overflow
+
+https://github.com/shellphish/how2heap - repo with many types of heap exploitation techniques.
+
+You cannot overwrite the return address of `main` like you could with a stack based buffer overflow. Like information on the stack, though, the compiler might put things in places that you might not expect.
+
+* Overwriting Function Pointers:
+http://hamsa.cs.northwestern.edu/readings/heap-overflows/
+
+By overflowing a buffer and overwriting the function pointers stored on the heap, an attacker can change the flow of execution and cause the application to call malicious code with elevated privileges.
+
+* [[free()]] exploit:
+https://www.win.tue.nl/~aeb/linux/hh/hh-11.html#ss11.2
+https://www.opennet.ru/base/sec/heap_overflow.txt.html - Opennet is cringe, but this old paper is very good for understanding.
+
+By overflowing a buffer and overwriting the metadata associated with an object stored on the heap, you might be able to overwrite the memory table pointer so that when `free()` runs, it frees up something other than what it originally allocated. When overwriting the size field, we must be careful that the computed location of the next chunk lies in allocated memory, not to cause a segfault in [[free()]]. 
+
+The C program does not call `free()` directly, since the address is unknown at translation time. The call is indirect via an entry in the program linking table that is filled by the dynamic loader. If we overwrite that entry with our favorite address, we will jump there instead.
+
+In [[free()]] `unlink()` is called, so we can change assignments `fwd->bk = bck; bck->fd = fwd` to place some stack address in one of them (if one of them is a variable, then we can place address in that variable).
+
+* UAF (Use After Free exploit):
+https://ctf101.org/binary-exploitation/heap-exploitation/
+
+
 ### Integer overflow attack
 Mmm, just an integer overflow so we need more memory to store the value. Hello Python with floating int size (`int8`, `int16`, `int32`)
-### Format strings overflow attack
-Using string formatting [[Library]] functions, such as `printf` or `sprintf`, to write large strings to the buffer with less size or `gets`, `scanf`, and `strcpy` that have not been bounds-checked to read more information that we are allowed to.
 ### Unicode overflow attack
 A Unicode overflow attack exploits the memory required to store a string in the Unicode format rather than the ASCII characters. Attackers use this type of buffer overflow attack when the program expects all inputs in ASCII characters.
 
@@ -38,4 +63,5 @@ A Unicode overflow attack exploits the memory required to store a string in the 
 * Structured exception handling overwrite protection: block overriding SEH.
 
 https://arstechnica.com/information-technology/2015/08/how-security-flaws-work-the-buffer-overflow/ - about stack overflow and prevention methods.
-https://habr.com/ru/articles/463227/ - heap overflow task solved.
+https://habr.com/ru/articles/463227/ - heap overflow task solved. (but not very good explanation)
+https://web.ecs.syr.edu/~wedu/seed/Book/book_sample_buffer.pdf - huge pdf
