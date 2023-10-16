@@ -28,6 +28,7 @@ Because memory access into RAM is very slow, MMU has a cache of most used pages.
 In [[ARM]] processors (in contrast to [[Intel]]) TLB has addresses with ASI identifier, so we can switch [[Process]] without TLB cache reset. [[Intel]] cannot add this kind of feature, because they'll break back compatibility with old [[OS]]es.
 If a page is not mapped to physical memory, an Page fault exception is thrown.
 ### Page swapping
-[[OS]] catches Page fault exception and looks for memory to map to given page. It may need to take away page from another (or same) process. Of course, [[OS]] tries to take the least important page using heuristics. One way to do it is clock method. This is possible because [[OS]] has access to translation table. 
+[[OS]] catches Page fault exception and looks for memory to map to given page. It may need to take away page from another (or same) process. Of course, [[OS]] tries to take the least important page using heuristics. One way to do it is clock method. 
+This is possible because [[OS]] has access to translation table. 
 ### Multilevel translation
 Even one full table of [[virtual memory]] mapping is very big, each selector + base is divided into three parts. Each of them has a mapping table. If a one of three page lookups has existence bit not marked, then it stops with exception. This allows to not maps a bunch of pages on the lower level hence memory savings.  

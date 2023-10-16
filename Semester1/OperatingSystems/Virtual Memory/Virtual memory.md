@@ -8,7 +8,7 @@ Process structures:
 - BSS - not initialized static data
 - STACK
 - Heap
-- Dynamic segments #ask
+- Dynamic segments - Dynamic libraries have 4 segments: Code, Data, #ask
 - User area process descriptor in kernel - legacy because now kernels have multiple threads and its no longer possible to map this to one area. (Its NOT user memory)
 	- Stack of process in kernel
 	- Open file descriptors
