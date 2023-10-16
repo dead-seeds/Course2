@@ -3,6 +3,9 @@ Thanks **The Morris Worm** - first web worm that used buffer overflow exploit.
 It occurs when the data volume exceeds the capacity of a memory buffer. In this way extra data can be written (or red) to the memory space right after buffer's, and this behavior we need to prevent.
 
 ### Stack-based overflow:
+https://web.ecs.syr.edu/~wedu/seed/Book/book_sample_buffer.pdf - huge pdf about stack-based buffer overflow
+https://arstechnica.com/information-technology/2015/08/how-security-flaws-work-the-buffer-overflow/ - about stack overflow and prevention methods.
+
 As an example, nowadays, many languages use [[Stack frame]] technology (so we know where frame pointers and return addresses and etc are stored), so with use of buffer overflow exploit we can change return address to what we want and run arbitrary commands at this address... Or, that sounds not so scary, we can just read or change data, that was allocated on stack.
 
 Trampoline technique: Instead of setting the return address directly to the address of the stack, they set the return address to an instruction that in turn passes execution to the stack.
@@ -14,6 +17,7 @@ Another moment... Stack has a finite size, soo if the user input is longer than 
 ### Heap-based overflow
 
 https://github.com/shellphish/how2heap - repo with many types of heap exploitation techniques.
+https://habr.com/ru/articles/463227/ - heap overflow task solved. (but not very good explanation)
 
 You cannot overwrite the return address of `main` like you could with a stack based buffer overflow. Like information on the stack, though, the compiler might put things in places that you might not expect.
 
@@ -22,15 +26,13 @@ http://hamsa.cs.northwestern.edu/readings/heap-overflows/
 
 By overflowing a buffer and overwriting the function pointers stored on the heap, an attacker can change the flow of execution and cause the application to call malicious code with elevated privileges.
 
-* [[free()]] exploit:
+* [[free()]] exploit (glibc 2.3.3+ has corrupted double-linked list check...):
 https://www.win.tue.nl/~aeb/linux/hh/hh-11.html#ss11.2
 https://www.opennet.ru/base/sec/heap_overflow.txt.html - Opennet is cringe, but this old paper is very good for understanding.
 
 By overflowing a buffer and overwriting the metadata associated with an object stored on the heap, you might be able to overwrite the memory table pointer so that when `free()` runs, it frees up something other than what it originally allocated. When overwriting the size field, we must be careful that the computed location of the next chunk lies in allocated memory, not to cause a segfault in [[free()]]. 
 
-The C program does not call `free()` directly, since the address is unknown at translation time. The call is indirect via an entry in the program linking table that is filled by the dynamic loader. If we overwrite that entry with our favorite address, we will jump there instead.
-
-In [[free()]] `unlink()` is called, so we can change assignments `fwd->bk = bck; bck->fd = fwd` to place some stack address in one of them (if one of them is a variable, then we can place address in that variable).
+The C program does not call `free()` directly, since the address is unknown at translation time. The call is indirect via an entry in the program linking table that is filled by the dynamic loader (`.plt` segment in `objdump -d progr_obj`). If we overwrite that entry with our favorite address, we will jump there instead. So we can place some stack address in one of them to crash the program. If we place some correct address of our script on the heap in there, we'll jump into it.
 
 * UAF (Use After Free exploit):
 https://ctf101.org/binary-exploitation/heap-exploitation/
@@ -61,7 +63,3 @@ A Unicode overflow attack exploits the memory required to store a string in the 
 	The data structures used to store the mapping don't just include the location (physical memory, disk, nowhere) of each page; they also contain (usually) three bits defining the page's protection: whether the page is readable, whether it is writeable, and whether it is executable.
 
 * Structured exception handling overwrite protection: block overriding SEH.
-
-https://arstechnica.com/information-technology/2015/08/how-security-flaws-work-the-buffer-overflow/ - about stack overflow and prevention methods.
-https://habr.com/ru/articles/463227/ - heap overflow task solved. (but not very good explanation)
-https://web.ecs.syr.edu/~wedu/seed/Book/book_sample_buffer.pdf - huge pdf
