@@ -22,15 +22,51 @@ http://hamsa.cs.northwestern.edu/readings/heap-overflows/
 
 By overflowing a buffer and overwriting the function pointers stored on the heap, an attacker can change the flow of execution and cause the application to call malicious code with elevated privileges.
 
-* [[free()]] exploit:
-https://www.win.tue.nl/~aeb/linux/hh/hh-11.html#ss11.2
-https://www.opennet.ru/base/sec/heap_overflow.txt.html - Opennet is cringe, but this old paper is very good for understanding.
+* `unlink()` exploit (2009 year, glibc 2.3.6):
+`unlink ()` assumed that if two chunks were allocated in the heap, and second was vulnerable to being overwritten through an overflow of first, a third fake chunk could be created and so deceive [[free()]] to proceed to unlink this second chunk and tie with the first.
 
-By overflowing a buffer and overwriting the metadata associated with an object stored on the heap, you might be able to overwrite the memory table pointer so that when `free()` runs, it frees up something other than what it originally allocated. When overwriting the size field, we must be careful that the computed location of the next chunk lies in allocated memory, not to cause a segfault in [[free()]]. 
+`unlink` was produced with the following code (yeah, this is an old version):
 
-The C program does not call `free()` directly, since the address is unknown at translation time. The call is indirect via an entry in the program linking table that is filled by the dynamic loader. If we overwrite that entry with our favorite address, we will jump there instead.
+```
+#define unlink( P, BK, FD ) {
+	BK = P->bk
+	FD = P->fd; 
+	FD->bk = BK;
+	BK->fd = FD;
+ }
+```
 
-In [[free()]] `unlink()` is called, so we can change assignments `fwd->bk = bck; bck->fd = fwd` to place some stack address in one of them (if one of them is a variable, then we can place address in that variable).
+
+Being `P` the second chunk, `P->fd` was changed to point to a memory area capable of being overwritten (such as `.dtors - 12`. `.dtors` - function with destructor attribute address, that are called after the end of execution (???  _I need a deeper research_ ???)). If `P->bk` then pointed to the address of a shellcode located at memory for an exploiter (at ENV or maybe at the same first chunk), then this address would be written in the 3rd step of `unlink()` code, in `FD->bk`. Then:
+
+```
+	FD->bk = P->fd + 12 = .dtors.
+   .dtors -> &(Shellcode)
+```
+   
+
+In fact, when using desctuctors, `P->fd` should point to `.dtors+4-12` so that `FD->bk` point to DTORS_END, to be executed at finish of application. Or it can be a function pointer or more things...
+
+After some appropriate patches to `glibc`, the macro `unlink()` is shown as follows:
+
+```
+#define unlink(P, BK, FD) 
+     FD = P->fd;                                                          \
+     BK = P->bk;                                                          \
+     if (__builtin_expect (FD->bk != P || BK->fd != P, 0))                \
+	    malloc_printerr (check_action, "corrupted double-linked list", P); \
+     else {                                                               \
+	    FD->bk = BK;                                                       \
+	    BK->fd = FD;                                                       \
+     }                                                                    \
+   }
+```
+If `P->fd`, pointing to the next chunk (`FD`), is not modified, then the `bk` pointer of `FD` should point to `P`. The same is true with the previous chunk (`BK`)... if `P->bk` points to the previous chunk, then the forward pointer at `BK` should point to `P`. In any other case, mean an error in the double linked list and thus the second chunk (`P`) has been hacked.
+
+And here ended the fun...
+
+https://www.win.tue.nl/~aeb/linux/hh/hh-11.html#ss11.2 - for glibc 2.2.4
+https://www.opennet.ru/base/sec/heap_overflow.txt.html - Opennet is cringe, but this old paper is kinda good for understanding.
 
 * UAF (Use After Free exploit):
 https://ctf101.org/binary-exploitation/heap-exploitation/
