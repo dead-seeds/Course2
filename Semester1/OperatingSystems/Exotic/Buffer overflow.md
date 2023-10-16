@@ -47,7 +47,7 @@ Being `P` the second chunk, `P->fd` was changed to point to a memory area capabl
 
 In fact, when using desctuctors, `P->fd` should point to `.dtors+4-12` so that `FD->bk` point to DTORS_END, to be executed at finish of application. Or it can be a function pointer or more things...
 
-After a some appropriate patches `glibc`, the macro `unlink()` is shown as follows:
+After some appropriate patches to `glibc`, the macro `unlink()` is shown as follows:
 
 ```
 #define unlink(P, BK, FD) 
