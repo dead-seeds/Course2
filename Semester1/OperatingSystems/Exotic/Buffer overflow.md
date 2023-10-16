@@ -22,8 +22,8 @@ http://hamsa.cs.northwestern.edu/readings/heap-overflows/
 
 By overflowing a buffer and overwriting the function pointers stored on the heap, an attacker can change the flow of execution and cause the application to call malicious code with elevated privileges.
 
+
 * `unlink()` exploit (2009 year, glibc 2.2.4):
-`unlink ()` assumed that if two chunks were allocated in the heap, and second was vulnerable to being overwritten through an overflow of first, a third fake chunk could be created and so deceive [[free()]] to proceed to unlink this second chunk and tie with the first.
 
 `unlink` was produced with the following code (yeah, this is an old version):
 
