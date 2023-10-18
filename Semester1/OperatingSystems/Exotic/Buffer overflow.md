@@ -37,7 +37,7 @@ By overflowing a buffer and overwriting the function pointers stored on the heap
 ```
 
 
-Being `P` the second chunk, `P->fd` was changed to point to a memory area capable of being overwritten (such as `.dtors - 12`. `.dtors` - function with destructor attribute address, that are called after the end of execution (???  _I need a deeper research_ ???)). If `P->bk` then pointed to the address of a shellcode located at memory for an exploiter (at ENV or maybe at the same first chunk), then this address would be written in the 3rd step of `unlink()` code, in `FD->bk`. Then:
+Being `P` the second chunk, `P->fd` was changed to point to a memory area capable of being overwritten (such as `.dtors - 12`. `.dtors` - function with destructors ([[Constructors and desctructors]]) attribute address). If `P->bk` then pointed to the address of a shellcode located at memory for an exploiter (at ENV, because we can obtain the addresses of environmental variables, or maybe at the same first chunk), then this address would be written in the 3rd step of `unlink()` code, in `FD->bk`. Then:
 
 ```
 	FD->bk = P->fd + 12 = .dtors.
@@ -45,7 +45,7 @@ Being `P` the second chunk, `P->fd` was changed to point to a memory area capabl
 ```
    
 
-In fact, when using desctuctors, `P->fd` should point to `.dtors+4-12` so that `FD->bk` point to DTORS_END, to be executed at finish of application. Or it can be a function pointer or more things...
+In fact, when using destructors ([[Constructors and desctructors]]), `P->fd` should point to `.dtors+4-12` so that `FD->bk` point to DTORS_END, to be executed at finish of application. Or it can be a function pointer or more things...
 
 After some appropriate patches to `glibc`, the macro `unlink()` is shown as follows:
 
