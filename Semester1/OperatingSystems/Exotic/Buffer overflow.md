@@ -8,7 +8,7 @@ As an example, nowadays, many languages use [[Stack frame]] technology (so we kn
 Trampoline technique: Instead of setting the return address directly to the address of the stack, they set the return address to an instruction that in turn passes execution to the stack.
 
 How to beat NX? The `system()` function, being part of a system [[Library]], is already executable. The exploit doesn't have to execute code from the stack, it just has to read the command line from the stack. This technique is called "return-to-libc"  (`libc` is the name of the Unix [[Library]] that implements many key functions, including `system()`, and is typically found loaded into every single [[UNIX]] [[Process]], so it makes a good target for this kind of thing)
-![[Pasted image 20231011175116.png]]
+![[Stack example.png]]
 Another moment... Stack has a finite size, soo if the user input is longer than the stack space, the program cannot verify it and stack overflows. The overflow can become a security threat or loophole when combined with malicious inputs.
 
 ### Heap-based overflow
@@ -22,7 +22,7 @@ http://hamsa.cs.northwestern.edu/readings/heap-overflows/
 
 By overflowing a buffer and overwriting the function pointers stored on the heap, an attacker can change the flow of execution and cause the application to call malicious code with elevated privileges.
 
-* `unlink()` exploit (2009 year, glibc 2.3.6):
+* `unlink()` exploit (2009 year, glibc 2.2.4):
 `unlink ()` assumed that if two chunks were allocated in the heap, and second was vulnerable to being overwritten through an overflow of first, a third fake chunk could be created and so deceive [[free()]] to proceed to unlink this second chunk and tie with the first.
 
 `unlink` was produced with the following code (yeah, this is an old version):
@@ -47,7 +47,7 @@ Being `P` the second chunk, `P->fd` was changed to point to a memory area capabl
 
 In fact, when using destructors ([[Constructors and desctructors]]), `P->fd` should point to `.dtors+4-12` so that `FD->bk` point to DTORS_END, to be executed at finish of application. Or it can be a function pointer or more things...
 
-After some appropriate patches to `glibc`, the macro `unlink()` is shown as follows:
+After some appropriate patches to `glibc` (I am sure that in 2.3.6 version this code does exist), the macro `unlink()` is shown as follows:
 
 ```
 #define unlink(P, BK, FD) 
