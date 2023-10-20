@@ -134,6 +134,6 @@ Chunk scheme:
 
 
 As we can see on the screenshot, `malloc` has EXPLICIT LIST OF FREE BLOCKS
-![[Pasted image 20230918143855.png]]
+![[Malloc part.png]]
 
 
