@@ -2,7 +2,7 @@
 
 Signal - a method of asynchronous communication between [[Kernel]] and [[Process]]es. Signal to other [[Process]] can only be sent through the [[Kernel]]. Signals can be sent by the [[Kernel]] to the [[Process]] or the whole [[Process group]].
 
-When [[Process]] receives a signal, it performs a default action (which is different depending on the signal) or, if default was overwritten by a previous call to [[sigaction]], calls a specific handler 
+When [[Process]] receives a signal, it performs a default action (which is different depending on the signal) or, if default was overwritten by a previous call to [[sigaction]], calls a specific [[Signal handler]].
 
 Each sent signal has an associated struct [[siginfo_t]] which contain a lot of information: what is the signal, why it was sent, who sent it, [[errno]], when it was consumed and etc.
 
