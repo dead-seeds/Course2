@@ -4,9 +4,13 @@ Signal - a method of asynchronous communication between [[Kernel]] and [[Process
 
 When [[Process]] receives a signal, it performs a default action (which is different depending on the signal) or, if default was overwritten by a previous call to [[sigaction]] (or `signal()`), calls a specific [[Signal handler]].
 
+
 Let's look closely at `signal()`:
 * After receiving the signal and calling a handler, signal disposition is set to default.
 * `signal()` returns address of the previous signal disposition (or `SIG_DFL` or `SIG_IGN`).
+
+The behavior of signal() varies across UNIX versions, and has also varied historically across different versions of Linux.  Avoid its use: use sigaction(2) instead
+
 
 Now let's check `int sigaction (int sig, const struct sigaction *act, struct sigaction *oact)`:
 * Structure [[sigaction]] has  `void \*sa_handler` (for `sig` signal), `void \*sa_sigaction (int, siginfo_t \*, void \*)`, `sigset_t sa_mask` and `int sa_flags`. Sa_handler is responsible for actions we'll do when the signal `sig` will be received.
