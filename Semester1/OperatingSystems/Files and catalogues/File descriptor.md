@@ -6,7 +6,7 @@ Table of file descriptors contain pointers to file descriptor objects (file desc
 * Counter of pointers (file descriptors) to this file description.
 * Pointer to [[inode]].
 For more details on file descriptions see `man 2 open` section NOTES.
-> You can look at the file descriptor table of any open running process by running `lsof -p PID` with [[PID]] of interesting process.
+> 	You can look at the file descriptor table of any open running process by running `lsof -p PID` with [[PID]] of interesting process. However, this does not work on Solaris (probably because of some permissions issues)
 
 If you open file N times, there will be N file structures.
 Actually, file will be closed only if it will be closed in parent process and all sub-processes.
