@@ -22,11 +22,11 @@ http://hamsa.cs.northwestern.edu/readings/heap-overflows/
 
 By overflowing a buffer and overwriting the function pointers stored on the heap, an attacker can change the flow of execution and cause the application to call malicious code with elevated privileges.
 
+
 * `unlink()` exploit (2009 year, glibc 2.2.4):
 `unlink ()` assumed that if two chunks were allocated in the heap, and second was vulnerable to being overwritten through an overflow of first, a third fake chunk could be created and so deceive [[free()]] to proceed to unlink this second chunk and tie with the first.
 
 `unlink` was produced with the following code (yeah, this is an old version):
-
 ```
 #define unlink( P, BK, FD ) {
 	BK = P->bk
@@ -38,6 +38,7 @@ By overflowing a buffer and overwriting the function pointers stored on the heap
 
 
 Being `P` the second chunk, `P->fd` was changed to point to a memory area capable of being overwritten (such as `.dtors - 12`. `.dtors` - function with destructors ([[Constructors and desctructors]]) attribute address). If `P->bk` then pointed to the address of a shellcode located at memory for an exploiter (at ENV, because we can obtain the addresses of environmental variables, or maybe at the same first chunk), then this address would be written in the 3rd step of `unlink()` code, in `FD->bk`. Then:
+
 
 ```
 	FD->bk = P->fd + 12 = .dtors.
