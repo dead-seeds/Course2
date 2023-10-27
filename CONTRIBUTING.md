@@ -9,6 +9,6 @@ If you see bad, misleading information, misinformation, knowledge gaps in subjec
 5. Profit!
 
 ## Guidelines
-Generaly, information in this repo we try to provide the gist of a subject - just enough to understand the mechanics.
+Generaly, with information in this repo we try to provide the gist of a subject - just enough to understand the mechanics.
 After that, for curious ones there are links and resources to delve deeper into the subject.
 As such, we try not to _copy_ anything from a resource, but to _explain it in our own words_.
