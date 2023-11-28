@@ -2,7 +2,7 @@
 
 Signal - a method of asynchronous communication between [[Kernel]] and [[Process]]es. Signal to other [[Process]] can only be sent through the [[Kernel]]. Signals can be sent by the [[Kernel]] to the [[Process]] or the whole [[Process group]].
 
-Every processor has lines of interrupt requests (IRQ, Interrupt ReQuest). When processor receives an interruption, it finishes processing of the current command and, instead of processing next command, handles the interruption. With more details:
+Every processor has lines of interrupt requests (IRQ, Interrupt ReQuest). When processor receives an [[Interruption]], it finishes processing of the current command and, instead of processing next command, handles the [[Interruption]]. With more details:
 * Processor saves PC and maybe some other registers
 * It gives control to the address of the _interrupt handler_ (this address is stored in the _***interrupt vector**_ table and every interruption has its own vector).
 
