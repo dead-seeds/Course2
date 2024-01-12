@@ -1,4 +1,4 @@
-Check critical sections in [[CRITS]].
+Check critical sections in [[CRITS (23-24)]].
 
 Ways to deal with critical sections:
 * Using immutable data
