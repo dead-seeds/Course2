@@ -1,0 +1,1 @@
+The main factor for OS popularity is hardware support. Applications from different OS you can run by virtualization. There is also a 

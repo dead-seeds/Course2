@@ -1,0 +1,1 @@
+A [[Synchronization primitive]] for [[garmonic interaction]]s. This is a queue, from which you can read and write to. In [[UNIX]] they are basically [[File]]s that represent a intermediate buffer in [[RAM]].

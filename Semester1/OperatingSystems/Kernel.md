@@ -1,1 +1,0 @@
-Kernel is code placed in privileged memory and is executed in [[System mode]]. [[Drivers]] are just kernel modules.

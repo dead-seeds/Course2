@@ -1,1 +1,0 @@
-[Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) - standard, that specifies file paths in [[Linux]].

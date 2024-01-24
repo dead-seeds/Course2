@@ -1,1 +1,0 @@
-Additional file options can contain bits for process capabilities, giving this executable only a part of root privileges. For example,  

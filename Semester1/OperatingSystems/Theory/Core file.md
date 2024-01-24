@@ -1,0 +1,1 @@
+Core file or core dump is an image of working memory of a [[Process]]. When a process crashes, it can write a core dump. 
