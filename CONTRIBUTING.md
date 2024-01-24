@@ -11,7 +11,7 @@ If you see bad, misleading information, misinformation, knowledge gaps in subjec
 ## The structure
 * Semester:
 	* Subject:
-		* Lectures:
+		* Theory:
 			* PDF files of lectures, your notes, etc...
 		* Seminars:
 			* Idk what to place here, so create the folder only if you need it...
