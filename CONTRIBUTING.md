@@ -8,8 +8,8 @@ If you see bad, misleading information, misinformation, knowledge gaps in subjec
 4. Wait for us to review the changes
 5. Profit!
 
-## Guidelines
-**There are no strict guidelines**
+## The structure
+Semester -> Subject -> Theme
 
 However, generally with information in this repo we try to provide the gist of a subject - just enough to understand the mechanics.
 After that, for curious ones there are links and resources to delve deeper into the subject.
