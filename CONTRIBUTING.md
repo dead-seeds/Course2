@@ -13,13 +13,14 @@ If you see bad, misleading information, misinformation, knowledge gaps in subjec
 	* Subject:
 		* Theory:
 			* PDF files of lectures, your notes, etc...
-		* Seminars:
-			* Idk what to place here, so create the folder only if you need it...
+		* Practice:
+			* Some lifehacks for solving tasks maybe
+			* Or maybe solved examples
 		* Control works:
 			* Previous tasks in any possible format...
 		* Exam:
-			* Examination papers of previous years...
-			* Examiners reviews...
+			* Examination papers of previous years with year notation
+			* Examiners reviews with year notation
 		* Sources
 	* The review
 
